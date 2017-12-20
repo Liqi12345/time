@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+body{
+	font-size:30px;
+}
+span{
+	font-size: 35px;
+	color: red;
+	font-weight: 600;
+	padding: 3px;
+}
+</style>
+<body>
+	圣诞还有<span> </span>天
+			<span> </span>时
+			<span> </span>分
+			<span> </span>秒
+			
+</body>
+</html>
+<script>
+// 不传参数是获取声明时候的时间
+// 月/日/年 时/分/秒,也可写为时/分/秒 月/日/年
+// 设置时间
+// 不能设置周几和时差
+	// let date = new Date('12/22/2017 14:00:00 ');
+	// 设置的月份会自动增加一个月,需要减一
+	// let date = new Date(2017,12,22,10,30,30 );
+	// 
+	// let date = new Date();
+	
+
+	// 设置年
+	// date.setFullYear(2018)
+	// 设置月
+	// date.setMonth(11)
+	// 设置日
+	// date.setDate(25)
+	// console.log(date) 
+	// console.dir(Date)
+
+	// 周几	星期日是0,能获取,不能设置
+	// date.getDay() 
+	// 几号
+	// date.getDate()
+	// 小时
+	// date.getHours()
+	// 月份,设置减一,获取加一
+	// date.getMonth()
+	// 获取年
+	// date.getFullYear()
+	// 1970年到现在的毫秒
+	// date.getTime()
+	// 时差
+	// date.getTimeZoneOffset()
+	// utc时间
+	// date.getUTCdate()
+	// 
+	// 
+	sum(10)
+	function sum(num){
+
+		// 声明未来时间date
+		let date = new Date();
+		// 设置未来时间为10分钟以后
+		date.setMinutes(date.getMinutes() + num)
+		move()
+		// 开启时间函数
+		setInterval(move, 1000)	
+		function move(){
+			// 现在时间
+			let now = new Date();
+			// 现在时间毫秒减去之前时间毫秒/1000,换算为秒
+			let time = Math.floor((date.getTime() - now.getTime())/1000)
+
+			let span = document.querySelectorAll('span')
+			let arr = [];
+		// let date = new Date(2017,11,25,12,30,0);
+		// console.log(date)	
+	
+		// console.log(time)
+		// let d = Math.floor(time/60/60/24)
+		// arr.push(d)
+		// console.log(d)
+		// time %= (60*60*24)
+		// console.log(time)
+		// let shi = Math.floor(time/60/60)
+		// arr.push(shi)
+		// console.log(shi)
+		// time %= (60*60)
+		// console.log(time)
+		
+		//  秒差/60得到分,取整
+			let fen = Math.floor(time/60)
+			arr.push(fen)
+			console.log(fen)
+			// 对不够一分的数取余,取整为秒
+			time %= 60;
+			let miao = Math.floor(time)
+			arr.push(miao)
+
+			// 遍历页面span,给span依次添加数组里的fen,miao
+			span.forEach(function(ele,index){
+				ele.innerText = arr[index]
+			})	
+		}
+	}
+
+		
+	
+		// span.forEach((ele,index) =>{
+		// 	ele.innerText = arr[index]
+		// })
+		
+
+
+
+
+
+
+
+
+	// console.log(date)
+	// let m = Math.floor((date.getTime() - now.getTime())/1000)
+	// console.log(m)
+	// let d = Math.floor(m/60/60/24)
+	// console.log(d)
+	// let time  = m/60/60%24
+	// console.log(time)
+	// let shi = parseInt(time)
+	// console.log(shi)
+	//  time =  m/60%60%24;
+	//  console.log(time)
+	// let fen = parseInt(time)
+	// console.log(fen)
+	//  time = m%60%60%24
+	//  console.log(time)
+	//  let miao = parseInt(time)
+	// console.log(miao)
+	// console.log(`${d}--${shi}--${fen}--${miao}`)
+	// shi = fen%60;
+	// console.log(shi)
+
+
+
+
+
+// (function move(num){
+
+	// 	let date = new Date;
+	// 	date.setMinutes(date.getMinutes() + num)
+
+	// 	setInterval(function(){
+	// 		let now = new Date;
+	// 		let time = Math.floor((date.getTime() - now.getTime())/1000)
+	// 		let span = document.querySelectorAll('span')
+	// 		let arr = [];
+	// 		let fen = Math.floor(time/60)
+	// 		arr.push(fen)
+	// 		console.log(fen)
+	// 		time %= 60;
+	// 		let miao = Math.floor(time)
+	// 		arr.push(miao)
+
+	// 		span.forEach(function(ele,index){
+	// 			ele.innerText = arr[index]
+	// 		})	
+	// 	},1000)
+	// })(10)
+</script>
